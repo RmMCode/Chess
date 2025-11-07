@@ -9,4 +9,4 @@ CSE 259 Project 2 - Chess
 
 
 % Jason Naicker
-  * Contributions - 
+  * Contributions - Finished and added functionality for Task 3 which is to prompt and execute a command for player A.
