@@ -1,6 +1,6 @@
 /* UPDATED WITH TASK 1 Completed - Was Already done in Recitations */
 /* UPDATED WITH TASK 2 Completed - Done By Rishit Maiti */
-/* UPDATED WITH TASK 3 partially Completed - Done By Rishit Maiti */
+/* UPDATED WITH TASK 3 Completed - Done By Rishit Maiti & Jason Naicker */
 
 % PVR 20/07/92: Added entry declaration for move/5 (it is used in a bagof).
 
@@ -9,7 +9,7 @@
 %
 % Adapted by Yu ("Tony") Zhang for ASU CSE 259, Fall 2019
 % Modified by Waqar Hassan Khan for ASU CSE 259, Fall 2025
-%
+% 
 % Standard rules of chess apply with the following exceptions:
 %  en passant captures are not allowed,
 %  pawns are promoted to queens only,
@@ -67,12 +67,13 @@ init_board([
 
 /* ----------------------------------------------------------------------- */
 /* WRITE YOUR CODE FOR TASK-3 HERE */
-/* MODIFY THE CODE SO THAT playerA AND playerB AUTO-COMPETE */
+/* MODIFY THE CODE SO THAT playerA AND playerB AUTO-COMPLETE */
 /* ----------------------------------------------------------------------- */
 play(Board) :-
-    /* playerA (white) moves automatically */
-    execute_command(playerA, Board, NewBoard),
-    /* playerB (black) responds automatically */
+    /* Prompt user for command to pass into execute for player A*/
+    get_command(Command),
+    execute_command(Command, Board, NewBoard),
+    /* playerB (black) responds automatically to player A moves*/
     execute_command(playerB, NewBoard, NextNewBoard),
     play(NextNewBoard).
 
@@ -180,7 +181,6 @@ strengthB([], _, _, Rand) :-
   random_between(0, Level, Number),
   Rand is Number.               % Add random value to avoid deadlock
 /* ----------------------------------------------------------------------- */
-
 /* ----------------------------------------------------------------------- */
 /* playerB Code */
 % Strength assesses utility of the current game state for player based on its Color
